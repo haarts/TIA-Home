@@ -7,6 +7,6 @@ pid = fork do
     file.close
   end
   while true do
-     file << p.readline
+     file.write(p.readline)
   end
 end
