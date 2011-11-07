@@ -6,6 +6,7 @@ unsigned long loop_sleep = 1000;
 int relayPin = 4;
 int temperaturePin = 0;
 float average;
+int hostVoltage = 4820;
   
 void setup() {
   pinMode(relayPin, OUTPUT);
@@ -37,6 +38,6 @@ void loop() {
 }
 
 float getTemperature() {
-  float voltage = (analogRead(temperaturePin) / 1024.0) * 5000;
+  float voltage = (analogRead(temperaturePin) / 1024.0) * hostVoltage;
   return (voltage - 500) / 10;
 }
