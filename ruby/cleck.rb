@@ -1,6 +1,6 @@
 require 'serialport'
 
-p = SerialPort.new("/dev/ttyUSB0")
+p = SerialPort.new(getUSBPort)
 logfile = "../log/data.log"
 if not File.exists?(File.join(logfile.split("/")[0..-2]))
   Dir.mkdir(File.join(logfile.split("/")[0..-2]))
@@ -20,4 +20,8 @@ fork do
     rescue IOError
     end
   end
+end
+
+def getUSBPort
+  Dir.entries("/dev/").find{|e| e =~ /USB/}
 end
