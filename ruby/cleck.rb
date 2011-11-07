@@ -16,7 +16,7 @@ fork do
   end
   while true do
     begin
-      file.write(Time.now + "," + p.readline)
+      file.write(Time.now.to_s + "," + p.readline)
     rescue IOError
     end
   end
