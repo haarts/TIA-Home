@@ -9,9 +9,10 @@ end
 file = File.open(logfile, "a")
 file.sync = true
 
-pid = fork do
+fork do
   Signal.trap("TERM") do
     file.close
+    Kernel.exit!
   end
   while true do
     begin
