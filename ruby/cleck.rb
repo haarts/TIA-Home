@@ -1,5 +1,10 @@
 require 'serialport'
 
+def getUSBPort
+  hit = Dir.entries("/dev/").find{|e| e =~ /USB/}
+  File.join('dev',hit)
+end
+
 p = SerialPort.new(getUSBPort)
 logfile = "../log/data.log"
 if not File.exists?(File.join(logfile.split("/")[0..-2]))
@@ -22,6 +27,3 @@ fork do
   end
 end
 
-def getUSBPort
-  Dir.entries("/dev/").find{|e| e =~ /USB/}
-end
