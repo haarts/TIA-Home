@@ -14,7 +14,6 @@ void setup() {
 }
 
 void loop() {
-  
   int seconds = millis() / 1000;
   if((seconds % total_period) < on_period) {
     digitalWrite(relayPin, HIGH);
@@ -31,8 +30,8 @@ void loop() {
   }
   if((seconds % 5) == 4) {
     float temperature = getTemperature();
-    average = average + temperature;
-    Serial.println(average / 5);
+    Serial.println((average + temperature)/ 5);
+    average = 0.0;
   }
   delay(loop_sleep);
 }
