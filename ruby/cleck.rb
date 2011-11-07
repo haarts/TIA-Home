@@ -2,7 +2,7 @@ require 'serialport'
 
 def getUSBPort
   hit = Dir.entries("/dev/").find{|e| e =~ /USB/}
-  File.join('dev',hit)
+  File.join('/','dev',hit)
 end
 
 p = SerialPort.new(getUSBPort)
